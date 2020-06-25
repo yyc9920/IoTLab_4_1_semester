@@ -1,0 +1,258 @@
+[
+  {
+    "id" : 1,
+    "name": "tteokboki",
+    "type": "yes",
+    "timer": "1200",
+    "ingedients": ["tteok", "gochujang", "vegitables", "water"]
+  },
+  {
+    "id" : 2,
+    "name": "ramen",
+    "type": "yes",
+    "timer": "300",
+    "ingredients": [
+      "noodle",
+      "ramen soup",
+      "water",
+      "vegetables",
+      "welsh onion"
+    ]
+  },
+  {
+    "id" : 3,
+    "name": "Jeyuk bokkeum",
+    "type": "yes",
+    "timer": "600",
+    "ingredients": [
+      "spicy pork",
+      "carrot",
+      "cabbage",
+      "rice",
+      "lettuce",
+      "welsh onion"
+    ]
+  },
+  {
+    "id" : 4,
+    "name": "gimbab",
+    "type": "no",
+    "timer": "300",
+    "ingredients": [
+      "dried laver",
+      "rice",
+      "ham",
+      "pickled radish",
+      "cucmber",
+      "carrot"
+    ]
+  },
+  {
+    "id" : 5,
+    "name": "dumpling",
+    "type": "yes",
+    "timer": "900",
+    "ingredients": [
+      "chopped meat",
+      "flour",
+      "cellophane noodles",
+      "tofu",
+      "salt",
+      "chives",
+      "black pepper"
+    ]
+  },
+  {
+    "id" : 6,
+    "name": "bibimbab",
+    "type": "yes",
+    "timer": "300",
+    "ingredients": [
+      "rice",
+      "fried egg",
+      "gochujang",
+      "carrot",
+      "been sprouts",
+      "zucchini",
+      "sesame oil"
+    ]
+  },
+  {
+    "id" : 7,
+    "name": "kimchi stew",
+    "type": "yes",
+    "timer": "900",
+    "ingredients": [
+      "pork",
+      "kimchi",
+      "water",
+      "welsh onion",
+      "tofu",
+      "red pepper powder"
+    ]
+  },
+  {
+    "id" : 8,
+    "name": "omelet rice",
+    "type": "yes",
+    "timer": "600",
+    "ingredients": [
+      "eggs",
+      "rice",
+      "oil",
+      "zucchini",
+      "carrot",
+      "onion",
+      "salt",
+      "black pepper",
+      "ketchup"
+    ]
+  },
+  {
+    "id" : 9,
+    "name": "doenjang stew",
+    "type": "yes",
+    "timer": "900",
+    "ingredients": [
+      "bean paste",
+      "tofu",
+      "zucchini",
+      "onion",
+      "welsh onion",
+      "kelp"
+    ]
+  },
+  {
+    "id" : 10,
+    "name": "soft tofu stew",
+    "type": "yes",
+    "timer": "900",
+    "ingredients": [
+      "soft tofu",
+      "water",
+      "zucchini",
+      "gochujang",
+      "salt",
+      "eggs",
+      "welsh onion",
+      "red pepper",
+      "crushed garlic",
+      "onion"
+    ]
+  },
+  {
+    "id" : 11,
+    "name": "Pork cutlet",
+    "type": "yes",
+    "timer": "600",
+    "ingredients": [
+      "pork loin",
+      "bread crumb",
+      "flour",
+      "eggs",
+      "salt",
+      "black pepper",
+      "pork cutlet sauce"
+    ]
+  },
+  {
+    "id" : 12,
+    "name": "naengmyeon",
+    "type": "yes",
+    "timer": "420",
+    "ingredients": [
+      "cold noodle",
+      "cucumber",
+      "brisket",
+      "water",
+      "salt",
+      "cucumber",
+      "pear",
+      "onion",
+      "garlic",
+      "ginger",
+      "dongchimi",
+      "radish"
+    ]
+  },
+  {
+    "id" : 13,
+    "name": "udon",
+    "type": "yes",
+    "timer": "600",
+    "ingredients": [
+      "fish cake",
+      "thick noodle",
+      "katsuoh yuksu",
+      "crushed garlic",
+      "crown daisy",
+      "red pepper",
+      "black pepper",
+      "welsh onion"
+    ]
+  },
+  {
+    "id" : 14,
+    "name": "sujebi",
+    "type": "yes",
+    "timer": "900",
+    "ingredients": [
+      "dough of flour",
+      "zucchini",
+      "carrot",
+      "potato",
+      "anchovy",
+      "crushed garlic",
+      "onion",
+      "welsh onion"
+    ]
+  },
+  {
+    "id" : 15,
+    "name": "kalguksu",
+    "type": "yes",
+    "timer": "900",
+    "ingredients": [
+      "dough of flour",
+      "zucchini",
+      "carrot",
+      "potato",
+      "anchovy",
+      "crushed garlic",
+      "onion",
+      "welsh onion"
+    ]
+  },
+  {
+    "id" : 16,
+    "name": "tteokguk",
+    "type": "yes",
+    "timer": "900",
+    "ingredients": [
+      "bar rice cake",
+      "egg",
+      "welsh onion",
+      "crushed garlic",
+      "black pepper",
+      "salt",
+      "soy sauce",
+      "brisket"
+    ]
+  },
+  {
+    "id" : 17,
+    "name": "kimchi pilau",
+    "type": "yes",
+    "timer": "600",
+    "ingredients": [
+      "rice",
+      "oil",
+      "kimchi",
+      "ham",
+      "sesame oil",
+      "egg",
+      "onion",
+      "stir-fried meat"
+    ]
+  }
+]

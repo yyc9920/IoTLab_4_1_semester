@@ -1,0 +1,635 @@
+[
+    {
+        "id": "77b677.4c31f988",
+        "type": "tab",
+        "label": "Functions",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "b8315f70.fca71",
+        "type": "http in",
+        "z": "77b677.4c31f988",
+        "name": "",
+        "url": "/add_ing",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 190,
+        "y": 320,
+        "wires": [
+            [
+                "32e975d2.1efd0a"
+            ]
+        ]
+    },
+    {
+        "id": "847bfeb6.c01f5",
+        "type": "http in",
+        "z": "77b677.4c31f988",
+        "name": "",
+        "url": "/gojson",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 190,
+        "y": 380,
+        "wires": [
+            [
+                "7221e593.32b46c",
+                "7d0a1b0a.970804",
+                "d661b52d.37c628"
+            ]
+        ]
+    },
+    {
+        "id": "d913d4e2.607a38",
+        "type": "http response",
+        "z": "77b677.4c31f988",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 970,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "917b764e.fac878",
+        "type": "http response",
+        "z": "77b677.4c31f988",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 610,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "3581b5c9.e740ca",
+        "type": "debug",
+        "z": "77b677.4c31f988",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 850,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "a4b68d5b.9bf09",
+        "type": "http request",
+        "z": "77b677.4c31f988",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "tls": "",
+        "proxy": "",
+        "authType": "",
+        "x": 1090,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7221e593.32b46c",
+        "type": "template",
+        "z": "77b677.4c31f988",
+        "name": "mypost",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"ko\">\n\n\t<head>\n\t\t<meta charset=\"UTF-8\">\n\t\t<title>성공 메세지</title>\n\t</head>\n\n\t<style>\nh2 {\n\tfont-size: 70px;\n}\nbody {\n  background-image: url('https://images.unsplash.com/photo-1479150928156-423a69d91fe0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');\n  background-repeat: no-repeat;\n  background-attachment: fixed;\n  background-size: cover;\n}\n\t</style>\n\n<center>\n    <br><br><br>\n    <h2>Recipe of {{{payload.name}}} is Successfully added!</h2>\n    <br>\n</center>\n</html>",
+        "output": "str",
+        "x": 380,
+        "y": 380,
+        "wires": [
+            [
+                "917b764e.fac878"
+            ]
+        ]
+    },
+    {
+        "id": "32e975d2.1efd0a",
+        "type": "template",
+        "z": "77b677.4c31f988",
+        "name": "ingredients",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"ko\">\n\n\t<head>\n\t\t<meta charset=\"UTF-8\">\n\t\t<title>커스텀 레시피 추가</title>\n\t</head>\n\n\t<style>\ninput {\n\twidth: 10em;\n\theight: 3em;\n\tfont-size: 15px;\n}\nbody {\n  background-image: url('https://images.unsplash.com/photo-1479150928156-423a69d91fe0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');\n  background-repeat: no-repeat;\n  background-attachment: fixed;\n  background-size: cover;\n}\n\na {\n    font-size: 30px;\n}\n\tform  { display: table;      }\n\tlabel { display: table-cell; }\n\tinput { display: table-cell; }\n\tp     { display: table-row;  }\n\t</style>\n\n\t<body>\n\t\t<center>\n\n\t\t\t<h1>커스텀 레시피를 추가하세요!</h1>\n\t\t\t<br><br>\n\t\t\t<form action=\"/gojson\" method=\"POST\" id=\"myform\">\n\t\t\t\t<p>\n\t\t\t\t\t<label for=\"a\" style=\"font-size:15pt;\"><b>Food Name : </b></label><input type=\"text\" name=\"name\">\n\t\t\t\t</p>\n\t\t\t\t<br>\n\t\t\t\t<p>\n\t\t\t\t\t<label for=\"a\" style=\"font-size:15pt;\"><b>Need Fire? : </b></label>\n\t\t\t\t\tYes<input type=\"radio\" name=\"type\" value=\"yes\" checked>\n\t\t\t\t\tNo<input type=\"radio\" name=\"type\" value=\"no\">\n\t\t\t\t</p>\n\t\t\t\t<br>\n\t\t\t\t<p>\n\t\t\t\t\t<label for=\"a\" style=\"font-size:15pt;\"><b>Time Needed(sec) : </b></label><input type=\"text\" name=\"timer\">\n\t\t\t\t</p>\n\t\t\t\t<br>\n\t\t\t\t<p>\n\t\t\t\t\t<label for=\"a\" style=\"font-size:15pt;\"><b>Ingredients 1 : </b></label><input type=\"text\" name=\"ingredients\">\n\t\t\t\t\t<label for=\"a\" style=\"font-size:15pt;\">&nbsp;&nbsp;<b>Ingredients 2 : </b></label><input type=\"text\" name=\"ingredients\">\n\t\t\t\t</p>\n\t\t\t\t<br>\n\t\t\t\t<p>\n\t\t\t\t\t<label for=\"a\" style=\"font-size:15pt;\"><b>Ingredients 3 : </b></label><input type=\"text\" name=\"ingredients\">\n\n\n\t\t\t\t\t<label for=\"a\" style=\"font-size:15pt;\">&nbsp;&nbsp;<b>Ingredients 4 : </b></label><input type=\"text\" name=\"ingredients\">\n\t\t\t\t</p>\n\t\t\t\t<br>\n\t\t\t\t<p>\n\t\t\t\t\t<label for=\"a\" style=\"font-size:15pt;\"><b>Ingredients 5 : </b></label><input type=\"text\" name=\"ingredients\">\n\n\n\t\t\t\t\t<label for=\"a\" style=\"font-size:15pt;\">&nbsp;&nbsp;<b>Ingredients 6 : </b></label><input type=\"text\" name=\"ingredients\">\n\t\t\t\t</p>\n\t\t\t\t<br>\n\t\t\t\t<p>\n\t\t\t\t\t<label for=\"a\" style=\"font-size:15pt;\"><b>Ingredients 7 : </b></label><input type=\"text\" name=\"ingredients\">\n\n\n\t\t\t\t\t<label for=\"a\" style=\"font-size:15pt;\">&nbsp;&nbsp;<b>Ingredients 8 : </b></label><input type=\"text\" name=\"ingredients\">\n\t\t\t\t</p>\n\t\t\t\t<br>\n\t\t\t\t<p>\n\t\t\t\t\t<label for=\"a\" style=\"font-size:15pt;\"><b>Ingredients 9 : </b></label><input type=\"text\" name=\"ingredients\">\n\n\n\t\t\t\t\t<label for=\"a\" style=\"font-size:15pt;\">&nbsp;&nbsp;<b>Ingredients 10 : </b></label><input type=\"text\" name=\"ingredients\">\n\t\t\t\t</p>\n\t\t\t\t<br>\n\t\t\t\t<p>\n\t\t\t\t\t<label for=\"a\" style=\"font-size:15pt;\"><b>Ingredients 11 : </b></label><input type=\"text\" name=\"ingredients\">\n\n\n\t\t\t\t\t<label for=\"a\" style=\"font-size:15pt;\">&nbsp;&nbsp;<b>Ingredients 12 : </b></label><input type=\"text\" name=\"ingredients\">\n\t\t\t\t</p>\n\t\t\t\t<br>\n\n\t\t\t\t<input type=\"submit\" value=\"레시피 추가\" style=\"font-size:15pt;\">\n\t\t\t</form>\n\t\t</center>\n\t</body>\n</html>\n",
+        "output": "str",
+        "x": 390,
+        "y": 320,
+        "wires": [
+            [
+                "d913d4e2.607a38"
+            ]
+        ]
+    },
+    {
+        "id": "5ba063a6.81cb0c",
+        "type": "ibmiot out",
+        "z": "77b677.4c31f988",
+        "authentication": "apiKey",
+        "apiKey": "f065c0ce.51ba8",
+        "outputType": "cmd",
+        "deviceId": "BoardA",
+        "deviceType": "EdgeServer",
+        "eventCommandType": "power",
+        "format": "json",
+        "data": "data",
+        "qos": 0,
+        "name": "BoardA",
+        "service": "registered",
+        "x": 640,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "5d463307.a3d77c",
+        "type": "function",
+        "z": "77b677.4c31f988",
+        "name": "init number of id",
+        "func": "var recipes=global.get('recipes') || {};\nvar tmp = recipes.d.length;\nvar evt1 = {};\nevt1.d = {};\nevt1.d.id = tmp+1;\nglobal.set('recipes', recipes);\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 420,
+        "y": 440,
+        "wires": [
+            [
+                "5ba063a6.81cb0c",
+                "fd0b3997.c8a378"
+            ]
+        ]
+    },
+    {
+        "id": "633d0d3e.c52964",
+        "type": "debug",
+        "z": "77b677.4c31f988",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 770,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "55f75e83.e22f4",
+        "type": "file",
+        "z": "77b677.4c31f988",
+        "name": "",
+        "filename": "/usr/src/node-red/final_project/test.log",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 490,
+        "y": 480,
+        "wires": [
+            [
+                "633d0d3e.c52964"
+            ]
+        ]
+    },
+    {
+        "id": "d661b52d.37c628",
+        "type": "function",
+        "z": "77b677.4c31f988",
+        "name": "Stringify",
+        "func": "var recipes=global.get('recipes') || {};\nvar tmp = recipes.d.length;\nvar evt1 = {};\nevt1=msg.payload;\nevt1.id = tmp+1;\nglobal.set('recipes', recipes);\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 200,
+        "y": 540,
+        "wires": [
+            [
+                "6767230e.4c014c"
+            ]
+        ]
+    },
+    {
+        "id": "6767230e.4c014c",
+        "type": "function",
+        "z": "77b677.4c31f988",
+        "name": "Stringify",
+        "func": "var evt1;\nevt1=\",\" + msg.payload;\nmsg.payload = evt1;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 340,
+        "y": 540,
+        "wires": [
+            [
+                "52dff1fb.ab52c"
+            ]
+        ]
+    },
+    {
+        "id": "52dff1fb.ab52c",
+        "type": "file",
+        "z": "77b677.4c31f988",
+        "name": "",
+        "filename": "/usr/src/node-red/final_project/test.log",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 590,
+        "y": 540,
+        "wires": [
+            [
+                "3581b5c9.e740ca",
+                "7e7ff056.5f01"
+            ]
+        ]
+    },
+    {
+        "id": "1c43114f.ec33bf",
+        "type": "function",
+        "z": "77b677.4c31f988",
+        "name": "Stringify",
+        "func": "var tmp;\ntmp = msg.payload;\n\nvar evt1;\nevt1=tmp + \"]\";\nmsg.payload = evt1;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 820,
+        "y": 620,
+        "wires": [
+            [
+                "197c7640.80ec5a",
+                "1f412cd3.05ce83",
+                "49845ab3.1e4054"
+            ]
+        ]
+    },
+    {
+        "id": "abb28147.a5fdb",
+        "type": "inject",
+        "z": "77b677.4c31f988",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 240,
+        "y": 620,
+        "wires": [
+            [
+                "7e7ff056.5f01"
+            ]
+        ]
+    },
+    {
+        "id": "7e7ff056.5f01",
+        "type": "file in",
+        "z": "77b677.4c31f988",
+        "name": "",
+        "filename": "/usr/src/node-red/final_project/test.log",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "x": 490,
+        "y": 620,
+        "wires": [
+            [
+                "1c43114f.ec33bf",
+                "98bb7f54.bec94"
+            ]
+        ]
+    },
+    {
+        "id": "66c1c766.b2f748",
+        "type": "debug",
+        "z": "77b677.4c31f988",
+        "name": "test",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1370,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "c382df4b.544f5",
+        "type": "function",
+        "z": "77b677.4c31f988",
+        "name": "set global",
+        "func": "var recipes=global.get('recipes') || {};\nrecipes.d = msg.payload;\nglobal.set('recipes', recipes);\nreturn {payload:JSON.stringify(recipes)};\n// var evt1 = {};\n// evt1.d = {};\n// evt1.d.recipes = msg.payload;\n// return {payload:JSON.stringify(evt1)}; \n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1120,
+        "y": 620,
+        "wires": [
+            [
+                "bc009717.758ce8"
+            ]
+        ]
+    },
+    {
+        "id": "98bb7f54.bec94",
+        "type": "debug",
+        "z": "77b677.4c31f988",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 790,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "197c7640.80ec5a",
+        "type": "debug",
+        "z": "77b677.4c31f988",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1010,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "1f412cd3.05ce83",
+        "type": "json",
+        "z": "77b677.4c31f988",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 990,
+        "y": 620,
+        "wires": [
+            [
+                "c382df4b.544f5"
+            ]
+        ]
+    },
+    {
+        "id": "bc009717.758ce8",
+        "type": "json",
+        "z": "77b677.4c31f988",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 1250,
+        "y": 620,
+        "wires": [
+            [
+                "66c1c766.b2f748"
+            ]
+        ]
+    },
+    {
+        "id": "7d0a1b0a.970804",
+        "type": "function",
+        "z": "77b677.4c31f988",
+        "name": "get id",
+        "func": "var recipes=global.get('recipes') || {};\n\nvar tmp = recipes.d.length;\nmsg.payload = tmp;\nglobal.set('recipes', recipes);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 350,
+        "y": 740,
+        "wires": [
+            [
+                "74b8005e.98756"
+            ]
+        ]
+    },
+    {
+        "id": "74b8005e.98756",
+        "type": "debug",
+        "z": "77b677.4c31f988",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 530,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "8568bbe1.557948",
+        "type": "inject",
+        "z": "77b677.4c31f988",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 200,
+        "y": 740,
+        "wires": [
+            [
+                "7d0a1b0a.970804"
+            ]
+        ]
+    },
+    {
+        "id": "16d40991.412b66",
+        "type": "template",
+        "z": "77b677.4c31f988",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html>\n    <head></head>\n    <body>\n        <ul>{{#payload.d}}\n            <li>{{id}}, {{name}}, {{type}}, {{timer}}</li>\n        {{/payload.d}}\n        </ul>\n</body>\n</html>",
+        "x": 580,
+        "y": 840,
+        "wires": [
+            [
+                "2140d66d.3f853a"
+            ]
+        ]
+    },
+    {
+        "id": "2140d66d.3f853a",
+        "type": "ui_template",
+        "z": "77b677.4c31f988",
+        "group": "a11b38b0.1d0fa8",
+        "name": "",
+        "order": 0,
+        "width": "6",
+        "height": "10",
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "x": 740,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d54f4dc5.e1c4a",
+        "type": "function",
+        "z": "77b677.4c31f988",
+        "name": "init recipes",
+        "func": "var recipes=global.get('recipes') || {};\nmsg.payload = recipes;\nglobal.set('recipes', recipes);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 840,
+        "wires": [
+            [
+                "16d40991.412b66"
+            ]
+        ]
+    },
+    {
+        "id": "3bdfccdf.93bbc4",
+        "type": "inject",
+        "z": "77b677.4c31f988",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 220,
+        "y": 840,
+        "wires": [
+            [
+                "d54f4dc5.e1c4a"
+            ]
+        ]
+    },
+    {
+        "id": "1b458223.9f951e",
+        "type": "inject",
+        "z": "77b677.4c31f988",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 240,
+        "y": 440,
+        "wires": [
+            [
+                "5d463307.a3d77c"
+            ]
+        ]
+    },
+    {
+        "id": "fd0b3997.c8a378",
+        "type": "debug",
+        "z": "77b677.4c31f988",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 750,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "63d08a84.a4d4f4",
+        "type": "comment",
+        "z": "77b677.4c31f988",
+        "name": "Set time",
+        "info": "",
+        "x": 140,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "76382abf.7975f4",
+        "type": "comment",
+        "z": "77b677.4c31f988",
+        "name": "Set time",
+        "info": "",
+        "x": 120,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "49845ab3.1e4054",
+        "type": "ibmiot out",
+        "z": "77b677.4c31f988",
+        "authentication": "apiKey",
+        "apiKey": "f065c0ce.51ba8",
+        "outputType": "cmd",
+        "deviceId": "Recipes",
+        "deviceType": "EdgeServer",
+        "eventCommandType": "power",
+        "format": "json",
+        "data": "data",
+        "qos": 0,
+        "name": "Recipes",
+        "service": "registered",
+        "x": 1000,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "f065c0ce.51ba8",
+        "type": "ibmiot",
+        "z": "",
+        "name": "midTerm",
+        "keepalive": "60",
+        "serverName": "",
+        "cleansession": true,
+        "appId": "",
+        "shared": false
+    },
+    {
+        "id": "a11b38b0.1d0fa8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Recipes",
+        "tab": "7b4ac9b7.449058",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "7b4ac9b7.449058",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Recipes",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

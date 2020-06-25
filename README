@@ -1,0 +1,13 @@
+unzip influx.zip
+cd influx
+run docker-compose up
+on a separte terminal, 
+    docker cp sys.monitor influxdb:/
+    docker exec -it influxdb /bin/bash, and in this container shell, run these
+        influx
+            create database sensorDB
+            exit
+        apt update
+        apt install procps
+        nohup /sys.monitor &
+

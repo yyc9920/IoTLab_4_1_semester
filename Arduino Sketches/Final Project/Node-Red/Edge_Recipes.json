@@ -1,0 +1,282 @@
+[
+    {
+        "id": "cbf26e0d.b4cdd",
+        "type": "tab",
+        "label": "Recipes",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "4cbf98c.6cb5e68",
+        "type": "file",
+        "z": "cbf26e0d.b4cdd",
+        "name": "",
+        "filename": "./Desktop/IoTLab_4_1_semester/final_recipes/recipes.log",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 710,
+        "y": 440,
+        "wires": [
+            [
+                "bc3dcb7a.b744f8"
+            ]
+        ]
+    },
+    {
+        "id": "d33637c2.94e2a8",
+        "type": "debug",
+        "z": "cbf26e0d.b4cdd",
+        "name": "test",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1490,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "f785b2ca.f2ff",
+        "type": "mqtt in",
+        "z": "cbf26e0d.b4cdd",
+        "name": "Recipes",
+        "topic": "iot-2/type/EdgeServer/id/Recipes/cmd/power/fmt/json",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "2a9ededb.8b11d2",
+        "x": 390,
+        "y": 440,
+        "wires": [
+            [
+                "4cbf98c.6cb5e68"
+            ]
+        ]
+    },
+    {
+        "id": "946f1bb9.42c9a8",
+        "type": "function",
+        "z": "cbf26e0d.b4cdd",
+        "name": "set global",
+        "func": "var recipes=global.get('recipes') || {};\nrecipes.d = msg.payload;\nglobal.set('recipes', recipes);\nreturn {payload:JSON.stringify(recipes)};\n// var evt1 = {};\n// evt1.d = {};\n// evt1.d.recipes = msg.payload;\n// return {payload:JSON.stringify(evt1)}; \n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1180,
+        "y": 440,
+        "wires": [
+            [
+                "d9795889.97ef98"
+            ]
+        ]
+    },
+    {
+        "id": "d9795889.97ef98",
+        "type": "json",
+        "z": "cbf26e0d.b4cdd",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 1330,
+        "y": 440,
+        "wires": [
+            [
+                "d33637c2.94e2a8"
+            ]
+        ]
+    },
+    {
+        "id": "bc3dcb7a.b744f8",
+        "type": "json",
+        "z": "cbf26e0d.b4cdd",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 1010,
+        "y": 440,
+        "wires": [
+            [
+                "946f1bb9.42c9a8"
+            ]
+        ]
+    },
+    {
+        "id": "d1a902d7.bf504",
+        "type": "template",
+        "z": "cbf26e0d.b4cdd",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html>\n    <head></head>\n    <body>\n        <ul>{{#payload.d}}\n            <li>{{id}}, {{name}}, {{type}}, {{timer}}</li>\n        {{/payload.d}}\n        </ul>\n</body>\n</html>",
+        "x": 780,
+        "y": 580,
+        "wires": [
+            [
+                "ed2da504.9ae998"
+            ]
+        ]
+    },
+    {
+        "id": "ed2da504.9ae998",
+        "type": "ui_template",
+        "z": "cbf26e0d.b4cdd",
+        "group": "4a1b89a.d078378",
+        "name": "",
+        "order": 0,
+        "width": "6",
+        "height": "10",
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "x": 940,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7956508c.2c7bf",
+        "type": "function",
+        "z": "cbf26e0d.b4cdd",
+        "name": "init recipes",
+        "func": "var recipes=global.get('recipes') || {};\nmsg.payload = recipes;\nglobal.set('recipes', recipes);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 590,
+        "y": 580,
+        "wires": [
+            [
+                "d1a902d7.bf504"
+            ]
+        ]
+    },
+    {
+        "id": "9f58bc16.a6aeb",
+        "type": "inject",
+        "z": "cbf26e0d.b4cdd",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 430,
+        "y": 580,
+        "wires": [
+            [
+                "7956508c.2c7bf"
+            ]
+        ]
+    },
+    {
+        "id": "7a6e3124.f6c4e",
+        "type": "function",
+        "z": "cbf26e0d.b4cdd",
+        "name": "init number of id",
+        "func": "var recipes=global.get('recipes') || {};\nvar tmp = recipes.d.length;\nvar evt1 = {};\nevt1.d = {};\nevt1.d.id = tmp+1;\nglobal.set('recipes', recipes);\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 600,
+        "y": 340,
+        "wires": [
+            [
+                "f62e08d3.99bcc8"
+            ]
+        ]
+    },
+    {
+        "id": "32196169.4b96be",
+        "type": "inject",
+        "z": "cbf26e0d.b4cdd",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 430,
+        "y": 340,
+        "wires": [
+            [
+                "7a6e3124.f6c4e"
+            ]
+        ]
+    },
+    {
+        "id": "f62e08d3.99bcc8",
+        "type": "mqtt out",
+        "z": "cbf26e0d.b4cdd",
+        "name": "BoardA",
+        "topic": "iot-2/type/EdgeServer/id/BoardA/cmd/power/fmt/json",
+        "qos": "0",
+        "retain": "false",
+        "broker": "2a9ededb.8b11d2",
+        "x": 800,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "79790221.9a127c",
+        "type": "comment",
+        "z": "cbf26e0d.b4cdd",
+        "name": "Read ME",
+        "info": "1. init number of id : Set the limit of id number so that we can pop up the error message when user selected recipe id that didn't exist in the recipe data.\n2. Data In : Change direction to your own directory and file name. Messages sent from Recipes node automatically saved to that direction. Check your raspberry pi's local file system.\n3. set Global : Set recipes data to global variable so that we can use that data all around the flows.\n4. init recipes~template : Initialize recipe list to ui dashboard.",
+        "x": 380,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "2a9ededb.8b11d2",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "172.30.1.30",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "4a1b89a.d078378",
+        "type": "ui_group",
+        "z": "",
+        "name": "Recipes",
+        "tab": "bec09bf0.bd3c78",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "bec09bf0.bd3c78",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Recipes",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

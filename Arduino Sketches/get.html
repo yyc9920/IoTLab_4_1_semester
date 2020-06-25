@@ -1,0 +1,18 @@
+<style>
+    input {
+        width: 10em;
+        height: 3em;
+        font-size: 30px;
+    }
+</style>
+
+<center>
+    
+    <h1>Capture & Upload a Photo</h1>
+    <form action="/recog" method="POST" enctype="multipart/form-data" id="myform">
+        <br><br>
+        <input type="file" name="myFile" accept="image/*" id="take" capture="environment">
+        <br><br><br>
+        <input type="submit" value="Recognize">
+    </form>
+</center>

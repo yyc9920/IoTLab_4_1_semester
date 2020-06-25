@@ -1,0 +1,2435 @@
+[
+    {
+        "id": "e015ab64.a175b8",
+        "type": "tab",
+        "label": "Yo Al Girl",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "ae35d7f4.644718",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Food1",
+        "func": "var recipes=global.get('recipes') || {};\n\nif(msg.payload.d === undefined){\n    return null;\n}\n\nmsg.payload=recipes.d[msg.payload.d.select].name;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 650,
+        "y": 380,
+        "wires": [
+            [
+                "980ac94.015c538",
+                "b3a77a35.6ba9b8",
+                "91899047.fad27"
+            ]
+        ]
+    },
+    {
+        "id": "c6636e0e.2cc7c",
+        "type": "ui_text",
+        "z": "e015ab64.a175b8",
+        "group": "4615b2ca.851d3c",
+        "order": 4,
+        "width": "0",
+        "height": "0",
+        "name": "",
+        "label": "Food",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 910,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "70bca2b4.8919ac",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Type1",
+        "func": "var recipes=global.get('recipes') || {};\n\nif(msg.payload.d === undefined){\n    return null;\n}\n\nmsg.payload=recipes.d[msg.payload.d.select].type;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 650,
+        "y": 340,
+        "wires": [
+            [
+                "711c3f05.637c5"
+            ]
+        ]
+    },
+    {
+        "id": "baf3444b.1e40f8",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Timer1",
+        "func": "var recipes=global.get('recipes') || {};\n\nif(msg.payload.d === undefined){\n    return null;\n}\n\nmsg.payload=recipes.d[msg.payload.d.select].timer;\nreturn msg;\n    \n// var recipes=global.get('recipes') || {};\n// if(msg.payload.d === undefined){\n//     return null;\n// }\n\n// var tmp = {};\n// tmp.ingredients = recipes.d[msg.payload.d.select].ingredients;\n\n// return {payload:JSON.stringify(tmp)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 650,
+        "y": 300,
+        "wires": [
+            [
+                "b667fb9e.4040b8"
+            ]
+        ]
+    },
+    {
+        "id": "980ac94.015c538",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "if(msg.payload === null){\n    \n}else{\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 380,
+        "wires": [
+            [
+                "c6636e0e.2cc7c"
+            ]
+        ]
+    },
+    {
+        "id": "711c3f05.637c5",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "if(msg.payload === null){\n    \n}else{\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 340,
+        "wires": [
+            [
+                "52b36237.222d3c"
+            ]
+        ]
+    },
+    {
+        "id": "b667fb9e.4040b8",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "if(msg.payload === null){\n    \n}else{\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 300,
+        "wires": [
+            [
+                "55d2f49f.d4b97c"
+            ]
+        ]
+    },
+    {
+        "id": "c45e955d.187e78",
+        "type": "switch",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "property": "payload.d.button",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 190,
+        "y": 600,
+        "wires": [
+            [
+                "baf3444b.1e40f8",
+                "70bca2b4.8919ac",
+                "ae35d7f4.644718",
+                "1c6a1571.4b539b"
+            ],
+            [
+                "b14b1d4c.6989c",
+                "858a6e42.83a9c",
+                "3642b4c4.cbb54c",
+                "278589d.238b876"
+            ],
+            [
+                "6fc53d1f.c53374",
+                "c7f34662.877228",
+                "d178f881.3002a8",
+                "7502b5b.b81d54c"
+            ],
+            [
+                "5a11add9.2d1094",
+                "26365abb.c04256",
+                "eb216605.4c95d8",
+                "5a8098ec.17e618"
+            ]
+        ]
+    },
+    {
+        "id": "e8c965c9.0ee9b8",
+        "type": "switch",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "property": "payload.d.button",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 270,
+        "y": 1080,
+        "wires": [
+            [
+                "caafea40.752878"
+            ],
+            [
+                "d7f3a611.6f3fa8"
+            ],
+            [
+                "fcced07e.fb523"
+            ],
+            [
+                "9a71f3b5.0b7b6"
+            ]
+        ]
+    },
+    {
+        "id": "329d043c.e328ac",
+        "type": "json",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 650,
+        "y": 980,
+        "wires": [
+            [
+                "1cde238d.f7808c",
+                "cd07255.1d87dd8"
+            ]
+        ]
+    },
+    {
+        "id": "1cde238d.f7808c",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "if(!msg.payload.ingredients.length){\n    \n}else{\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 980,
+        "wires": [
+            [
+                "6bda1c8b.c67e14"
+            ]
+        ]
+    },
+    {
+        "id": "6bda1c8b.c67e14",
+        "type": "ui_text",
+        "z": "e015ab64.a175b8",
+        "group": "4615b2ca.851d3c",
+        "order": 4,
+        "width": "6",
+        "height": "5",
+        "name": "",
+        "label": "Ingredients",
+        "format": "{{msg.payload.ingredients}}",
+        "layout": "col-center",
+        "x": 910,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "3642b4c4.cbb54c",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Food2",
+        "func": "var recipes=global.get('recipes') || {};\n\nif(msg.payload.d === undefined){\n    return null;\n}\n\nmsg.payload=recipes.d[msg.payload.d.select].name;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 650,
+        "y": 500,
+        "wires": [
+            [
+                "2b0f6a40.70f786",
+                "805a762f.bd5f88"
+            ]
+        ]
+    },
+    {
+        "id": "92cc12fd.1c192",
+        "type": "ui_text",
+        "z": "e015ab64.a175b8",
+        "group": "7d1a43f4.572b4c",
+        "order": 4,
+        "width": "0",
+        "height": "0",
+        "name": "",
+        "label": "Food",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 970,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "858a6e42.83a9c",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Type2",
+        "func": "var recipes=global.get('recipes') || {};\n\nif(msg.payload.d === undefined){\n    return null;\n}\n\nmsg.payload=recipes.d[msg.payload.d.select].type;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 650,
+        "y": 460,
+        "wires": [
+            [
+                "f9d3a8c7.355188"
+            ]
+        ]
+    },
+    {
+        "id": "b14b1d4c.6989c",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Timer2",
+        "func": "var recipes=global.get('recipes') || {};\n\nif(msg.payload.d === undefined){\n    return null;\n}\n\nmsg.payload=recipes.d[msg.payload.d.select].timer;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 650,
+        "y": 420,
+        "wires": [
+            [
+                "682ba576.85f20c"
+            ]
+        ]
+    },
+    {
+        "id": "2b0f6a40.70f786",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "if(msg.payload === null){\n    \n}else{\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 500,
+        "wires": [
+            [
+                "92cc12fd.1c192"
+            ]
+        ]
+    },
+    {
+        "id": "f9d3a8c7.355188",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "if(msg.payload === null){\n    \n}else{\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 460,
+        "wires": [
+            [
+                "eb80fb29.13ade8"
+            ]
+        ]
+    },
+    {
+        "id": "682ba576.85f20c",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "if(msg.payload === null){\n    \n}else{\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 420,
+        "wires": [
+            [
+                "8a886a6.530d498"
+            ]
+        ]
+    },
+    {
+        "id": "d178f881.3002a8",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Food3",
+        "func": "var recipes=global.get('recipes') || {};\n\nif(msg.payload.d === undefined){\n    return null;\n}\n\nmsg.payload=recipes.d[msg.payload.d.select].name;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 650,
+        "y": 620,
+        "wires": [
+            [
+                "55a195b.d31226c",
+                "d37ea5a6.9c2cf8"
+            ]
+        ]
+    },
+    {
+        "id": "27ac773e.d74028",
+        "type": "ui_text",
+        "z": "e015ab64.a175b8",
+        "group": "dbb5f7c1.9880c8",
+        "order": 4,
+        "width": "0",
+        "height": "0",
+        "name": "",
+        "label": "Food",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 910,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "c7f34662.877228",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Type3",
+        "func": "var recipes=global.get('recipes') || {};\n\nif(msg.payload.d === undefined){\n    return null;\n}\n\nmsg.payload=recipes.d[msg.payload.d.select].type;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 650,
+        "y": 580,
+        "wires": [
+            [
+                "20371a96.2fe016"
+            ]
+        ]
+    },
+    {
+        "id": "6fc53d1f.c53374",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Timer3",
+        "func": "var recipes=global.get('recipes') || {};\n\nif(msg.payload.d === undefined){\n    return null;\n}\n\nmsg.payload=recipes.d[msg.payload.d.select].timer;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 650,
+        "y": 540,
+        "wires": [
+            [
+                "c98dd3d9.f7f78"
+            ]
+        ]
+    },
+    {
+        "id": "55a195b.d31226c",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "if(msg.payload === null){\n    \n}else{\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 620,
+        "wires": [
+            [
+                "27ac773e.d74028"
+            ]
+        ]
+    },
+    {
+        "id": "20371a96.2fe016",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "if(msg.payload === null){\n    \n}else{\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 580,
+        "wires": [
+            [
+                "bc401615.896668"
+            ]
+        ]
+    },
+    {
+        "id": "c98dd3d9.f7f78",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "if(msg.payload === null){\n    \n}else{\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 540,
+        "wires": [
+            [
+                "e8ede88e.70b258"
+            ]
+        ]
+    },
+    {
+        "id": "eb216605.4c95d8",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Food4",
+        "func": "var recipes=global.get('recipes') || {};\n\nif(msg.payload.d === undefined){\n    return null;\n}\n\nmsg.payload=recipes.d[msg.payload.d.select].name;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 650,
+        "y": 740,
+        "wires": [
+            [
+                "4fdb8868.a8a678",
+                "8a08edb2.ce264"
+            ]
+        ]
+    },
+    {
+        "id": "90643d66.00cf6",
+        "type": "ui_text",
+        "z": "e015ab64.a175b8",
+        "group": "d1e674ee.c140f8",
+        "order": 4,
+        "width": "0",
+        "height": "0",
+        "name": "",
+        "label": "Food",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 910,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "26365abb.c04256",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Type4",
+        "func": "var recipes=global.get('recipes') || {};\n\nif(msg.payload.d === undefined){\n    return null;\n}\n\nmsg.payload=recipes.d[msg.payload.d.select].type;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 650,
+        "y": 700,
+        "wires": [
+            [
+                "176b5c06.2b7b34"
+            ]
+        ]
+    },
+    {
+        "id": "5a11add9.2d1094",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Timer4",
+        "func": "var recipes=global.get('recipes') || {};\n\nif(msg.payload.d === undefined){\n    return null;\n}\n\nmsg.payload=recipes.d[msg.payload.d.select].timer;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 650,
+        "y": 660,
+        "wires": [
+            [
+                "42edae35.77be6"
+            ]
+        ]
+    },
+    {
+        "id": "4fdb8868.a8a678",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "if(msg.payload === null){\n    \n}else{\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 740,
+        "wires": [
+            [
+                "90643d66.00cf6"
+            ]
+        ]
+    },
+    {
+        "id": "176b5c06.2b7b34",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "if(msg.payload === null){\n    \n}else{\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 700,
+        "wires": [
+            [
+                "dd0bcb5.1323c38"
+            ]
+        ]
+    },
+    {
+        "id": "42edae35.77be6",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "if(msg.payload === null){\n    \n}else{\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 660,
+        "wires": [
+            [
+                "fde5aa0b.d166b8"
+            ]
+        ]
+    },
+    {
+        "id": "55d2f49f.d4b97c",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "SetTimer1",
+        "func": "var evt1 = {};\nevt1.d = {};\nevt1.d.timer1=msg.payload;\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 910,
+        "y": 300,
+        "wires": [
+            [
+                "2b879076.58462"
+            ]
+        ]
+    },
+    {
+        "id": "b3a77a35.6ba9b8",
+        "type": "debug",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1230,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "5f1a5f5.56752a",
+        "type": "ui_switch",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "label": "Power",
+        "tooltip": "",
+        "group": "4615b2ca.851d3c",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": "true",
+        "topic": "",
+        "style": "",
+        "onvalue": "on",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "off",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "x": 1090,
+        "y": 420,
+        "wires": [
+            [
+                "2cb5def8.c1af22",
+                "229d3680.f2678a"
+            ]
+        ]
+    },
+    {
+        "id": "52b36237.222d3c",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Power1",
+        "func": "var evt1 = {};\nevt1.d = {};\nif(msg.payload == \"yes\"){\n    evt1.d.power1=\"on\";\n}else{\n    evt1.d.power1=\"off\";\n}\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 920,
+        "y": 340,
+        "wires": [
+            [
+                "2b879076.58462"
+            ]
+        ]
+    },
+    {
+        "id": "2cb5def8.c1af22",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Stringify1",
+        "func": "var evt1 = {};\nevt1.d = {};\nevt1.d.power1=msg.payload;\nif(msg.payload == \"on\"){\n    evt1.d.timer1=300;\n}\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1240,
+        "y": 440,
+        "wires": [
+            [
+                "2b879076.58462"
+            ]
+        ]
+    },
+    {
+        "id": "87b5fb13.d09eb8",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Power1",
+        "func": "if(msg.payload.d === undefined){\n    return null;\n}\n\nmsg.payload=msg.payload.d.power1;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 220,
+        "y": 400,
+        "wires": [
+            [
+                "5f1a5f5.56752a",
+                "a71b1740.850358",
+                "b46dac70.0db2",
+                "d251e71a.1f0e78"
+            ]
+        ]
+    },
+    {
+        "id": "e5227e80.929c8",
+        "type": "debug",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 250,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "229d3680.f2678a",
+        "type": "debug",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1230,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "5d626536.5d3b5c",
+        "type": "debug",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1630,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "eb80fb29.13ade8",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Power2",
+        "func": "var evt1 = {};\nevt1.d = {};\nif(msg.payload == \"yes\"){\n    evt1.d.power2=\"on\";\n}else{\n    evt1.d.power2=\"off\";\n}\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 920,
+        "y": 460,
+        "wires": [
+            [
+                "2b879076.58462"
+            ]
+        ]
+    },
+    {
+        "id": "bc401615.896668",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Power3",
+        "func": "var evt1 = {};\nevt1.d = {};\nif(msg.payload == \"yes\"){\n    evt1.d.power3=\"on\";\n}else{\n    evt1.d.power3=\"off\";\n}\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 920,
+        "y": 580,
+        "wires": [
+            [
+                "2b879076.58462"
+            ]
+        ]
+    },
+    {
+        "id": "dd0bcb5.1323c38",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Power4",
+        "func": "var evt1 = {};\nevt1.d = {};\nif(msg.payload == \"yes\"){\n    evt1.d.power4=\"on\";\n}else{\n    evt1.d.power4=\"off\";\n}\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 920,
+        "y": 700,
+        "wires": [
+            [
+                "2b879076.58462"
+            ]
+        ]
+    },
+    {
+        "id": "805a1664.156df8",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Power2",
+        "func": "if(msg.payload.d === undefined){\n    return null;\n}\n\nmsg.payload=msg.payload.d.power2;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 218,
+        "y": 440,
+        "wires": [
+            [
+                "fbed0c5a.819a",
+                "d77c77d4.ea3018",
+                "e5227e80.929c8",
+                "1685e381.b2eafc",
+                "c8152c29.4150c"
+            ]
+        ]
+    },
+    {
+        "id": "8fe73c05.4bb92",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Power3",
+        "func": "if(msg.payload.d === undefined){\n    return null;\n}\n\nmsg.payload=msg.payload.d.power3;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 220,
+        "y": 480,
+        "wires": [
+            [
+                "46bcfbc9.83bfd4",
+                "ca20813e.ce561",
+                "d65732e9.a801b",
+                "98af3d5f.cc0b2"
+            ]
+        ]
+    },
+    {
+        "id": "593498ad.ba35c8",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Power4",
+        "func": "if(msg.payload.d === undefined){\n    return null;\n}\n\nmsg.payload=msg.payload.d.power4;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 220,
+        "y": 520,
+        "wires": [
+            [
+                "1d604141.46708f",
+                "f12aa751.b99438",
+                "dab18e34.ebcc7",
+                "4c78b23a.389dac"
+            ]
+        ]
+    },
+    {
+        "id": "fbed0c5a.819a",
+        "type": "ui_switch",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "label": "Power",
+        "tooltip": "",
+        "group": "7d1a43f4.572b4c",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": "true",
+        "topic": "",
+        "style": "",
+        "onvalue": "on",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "off",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "x": 1110,
+        "y": 500,
+        "wires": [
+            [
+                "cb4f5121.5c3d3"
+            ]
+        ]
+    },
+    {
+        "id": "46bcfbc9.83bfd4",
+        "type": "ui_switch",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "label": "Power",
+        "tooltip": "",
+        "group": "dbb5f7c1.9880c8",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": "true",
+        "topic": "",
+        "style": "",
+        "onvalue": "on",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "off",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "x": 1110,
+        "y": 560,
+        "wires": [
+            [
+                "f6f46e41.bf359"
+            ]
+        ]
+    },
+    {
+        "id": "1d604141.46708f",
+        "type": "ui_switch",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "label": "Power",
+        "tooltip": "",
+        "group": "d1e674ee.c140f8",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": "true",
+        "topic": "",
+        "style": "",
+        "onvalue": "on",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "off",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "x": 1110,
+        "y": 620,
+        "wires": [
+            [
+                "acf11f22.e78c2"
+            ]
+        ]
+    },
+    {
+        "id": "cb4f5121.5c3d3",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Stringify2",
+        "func": "var evt1 = {};\nevt1.d = {};\nevt1.d.power2=msg.payload;\nif(msg.payload == \"on\"){\n    evt1.d.timer2=300;\n}\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1240,
+        "y": 500,
+        "wires": [
+            [
+                "2b879076.58462"
+            ]
+        ]
+    },
+    {
+        "id": "f6f46e41.bf359",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Stringify3",
+        "func": "var evt1 = {};\nevt1.d = {};\nevt1.d.power3=msg.payload;\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1240,
+        "y": 560,
+        "wires": [
+            [
+                "2b879076.58462"
+            ]
+        ]
+    },
+    {
+        "id": "acf11f22.e78c2",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Stringify4",
+        "func": "var evt1 = {};\nevt1.d = {};\nevt1.d.power4=msg.payload;\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1240,
+        "y": 620,
+        "wires": [
+            [
+                "2b879076.58462"
+            ]
+        ]
+    },
+    {
+        "id": "8a886a6.530d498",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "SetTimer2",
+        "func": "var evt1 = {};\nevt1.d = {};\nevt1.d.timer2=msg.payload;\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 910,
+        "y": 420,
+        "wires": [
+            [
+                "2b879076.58462"
+            ]
+        ]
+    },
+    {
+        "id": "1c6a1571.4b539b",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Cancel1",
+        "func": "if(msg.payload.d === undefined){\n    return null;\n}\n\n    msg.payload=msg.payload.d.cnc_food;\n    return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1080,
+        "y": 720,
+        "wires": [
+            [
+                "ec7d73f1.93571"
+            ]
+        ]
+    },
+    {
+        "id": "ec7d73f1.93571",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "if(msg.payload === null){\n    \n}else{\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1210,
+        "y": 720,
+        "wires": [
+            [
+                "eb706836.e37c98"
+            ]
+        ]
+    },
+    {
+        "id": "eb706836.e37c98",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Power1",
+        "func": "var evt1 = {};\nevt1.d = {};\nif(msg.payload == \"yes\"){\n    evt1.d.power1=\"off\";\n}else;\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1360,
+        "y": 720,
+        "wires": [
+            [
+                "2b879076.58462"
+            ]
+        ]
+    },
+    {
+        "id": "a71b1740.850358",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "reset1",
+        "func": "if(msg.payload == \"off\"){\n    msg.payload = \"\"\n}else{\n    return null;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 370,
+        "y": 380,
+        "wires": [
+            [
+                "c6636e0e.2cc7c",
+                "6bda1c8b.c67e14",
+                "91899047.fad27",
+                "8d175c08.de222"
+            ]
+        ]
+    },
+    {
+        "id": "278589d.238b876",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Cancel2",
+        "func": "if(msg.payload.d === undefined){\n    return null;\n}\n\n    msg.payload=msg.payload.d.cnc_food;\n    return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1080,
+        "y": 760,
+        "wires": [
+            [
+                "5fca43f5.f2f2ec"
+            ]
+        ]
+    },
+    {
+        "id": "5fca43f5.f2f2ec",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "if(msg.payload === null){\n    \n}else{\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1210,
+        "y": 760,
+        "wires": [
+            [
+                "f5c58b50.f9b858"
+            ]
+        ]
+    },
+    {
+        "id": "f5c58b50.f9b858",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Power2",
+        "func": "var evt1 = {};\nevt1.d = {};\nif(msg.payload == \"yes\"){\n    evt1.d.power2=\"off\";\n}else;\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1360,
+        "y": 760,
+        "wires": [
+            [
+                "2b879076.58462"
+            ]
+        ]
+    },
+    {
+        "id": "7502b5b.b81d54c",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Cancel3",
+        "func": "if(msg.payload.d === undefined){\n    return null;\n}\n\n    msg.payload=msg.payload.d.cnc_food;\n    return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1080,
+        "y": 800,
+        "wires": [
+            [
+                "d3fa4443.0b3fb8"
+            ]
+        ]
+    },
+    {
+        "id": "d3fa4443.0b3fb8",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "if(msg.payload === null){\n    \n}else{\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1210,
+        "y": 800,
+        "wires": [
+            [
+                "fcc3f850.d73658"
+            ]
+        ]
+    },
+    {
+        "id": "fcc3f850.d73658",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Power3",
+        "func": "var evt1 = {};\nevt1.d = {};\nif(msg.payload == \"yes\"){\n    evt1.d.power3=\"off\";\n}else;\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1360,
+        "y": 800,
+        "wires": [
+            [
+                "2b879076.58462"
+            ]
+        ]
+    },
+    {
+        "id": "5a8098ec.17e618",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Cancel4",
+        "func": "if(msg.payload.d === undefined){\n    return null;\n}\n\n    msg.payload=msg.payload.d.cnc_food;\n    return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1080,
+        "y": 840,
+        "wires": [
+            [
+                "445d8dc4.f91f04"
+            ]
+        ]
+    },
+    {
+        "id": "445d8dc4.f91f04",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "if(msg.payload === null){\n    \n}else{\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1210,
+        "y": 840,
+        "wires": [
+            [
+                "794132cf.bf0ffc"
+            ]
+        ]
+    },
+    {
+        "id": "794132cf.bf0ffc",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Power4",
+        "func": "var evt1 = {};\nevt1.d = {};\nif(msg.payload == \"yes\"){\n    evt1.d.power4=\"off\";\n}else;\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1360,
+        "y": 840,
+        "wires": [
+            [
+                "2b879076.58462"
+            ]
+        ]
+    },
+    {
+        "id": "d77c77d4.ea3018",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "reset2",
+        "func": "if(msg.payload == \"off\"){\n    msg.payload = \"\"\n}else{\n    return null;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 370,
+        "y": 420,
+        "wires": [
+            [
+                "92cc12fd.1c192",
+                "8f33a47f.f10d08",
+                "805a762f.bd5f88",
+                "c2391d1e.afafc"
+            ]
+        ]
+    },
+    {
+        "id": "ca20813e.ce561",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "reset3",
+        "func": "if(msg.payload == \"off\"){\n    msg.payload = \"\"\n}else{\n    return null;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 355,
+        "y": 470,
+        "wires": [
+            [
+                "27ac773e.d74028",
+                "37d04dd6.a04fe2",
+                "d37ea5a6.9c2cf8",
+                "aaf881cc.02d67"
+            ]
+        ]
+    },
+    {
+        "id": "f12aa751.b99438",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "reset4",
+        "func": "if(msg.payload == \"off\"){\n    msg.payload = \"\"\n}else{\n    return null;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 350,
+        "y": 520,
+        "wires": [
+            [
+                "90643d66.00cf6",
+                "e6600179.82c79",
+                "8a08edb2.ce264",
+                "4b49cc47.c57fe4"
+            ]
+        ]
+    },
+    {
+        "id": "777b3e99.6a8f5",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "set global",
+        "func": "var recipes=global.get('recipes') || {};\nif(msg.payload.test == 3){\n    msg.payload = recipes.d[3];\n}else{\n    msg.payload = \"fail\";\n}\nglobal.set('recipes', recipes);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 560,
+        "y": 1300,
+        "wires": [
+            [
+                "537e5149.4e9a8"
+            ]
+        ]
+    },
+    {
+        "id": "8054180c.8b31c8",
+        "type": "inject",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "topic": "",
+        "payload": "{\"test\" : 3}",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 240,
+        "y": 1300,
+        "wires": [
+            [
+                "441e152f.244dbc"
+            ]
+        ]
+    },
+    {
+        "id": "537e5149.4e9a8",
+        "type": "debug",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 730,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "441e152f.244dbc",
+        "type": "json",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 390,
+        "y": 1300,
+        "wires": [
+            [
+                "777b3e99.6a8f5"
+            ]
+        ]
+    },
+    {
+        "id": "9b4e4518.c0c768",
+        "type": "json",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 650,
+        "y": 1040,
+        "wires": [
+            [
+                "67007a58.147de4"
+            ]
+        ]
+    },
+    {
+        "id": "d7f3a611.6f3fa8",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Ingredients2",
+        "func": "var recipes=global.get('recipes') || {};\n\nif(msg.payload.d === undefined){\n    return null;\n}\n\nvar tmp = {};\ntmp.ingredients = recipes.d[msg.payload.d.select].ingredients;\n\nreturn {payload:JSON.stringify(tmp)};\n\n// var recipes=global.get('recipes') || {};\n// if(msg.payload.test == 3){\n//     msg.payload = recipes.d[3];\n// }else{\n//     msg.payload = \"fail\";\n// }\n// global.set('recipes', recipes);\n// return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 490,
+        "y": 1040,
+        "wires": [
+            [
+                "9b4e4518.c0c768",
+                "600cc666.bf5eb8"
+            ]
+        ]
+    },
+    {
+        "id": "67007a58.147de4",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "if(!msg.payload.ingredients.length){\n    \n}else{\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 1040,
+        "wires": [
+            [
+                "8f33a47f.f10d08"
+            ]
+        ]
+    },
+    {
+        "id": "8f33a47f.f10d08",
+        "type": "ui_text",
+        "z": "e015ab64.a175b8",
+        "group": "7d1a43f4.572b4c",
+        "order": 4,
+        "width": "6",
+        "height": "5",
+        "name": "",
+        "label": "Ingredients",
+        "format": "{{msg.payload.ingredients}}",
+        "layout": "col-center",
+        "x": 910,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "4c81054a.18ddac",
+        "type": "json",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 650,
+        "y": 1100,
+        "wires": [
+            [
+                "21f2e324.58e92c"
+            ]
+        ]
+    },
+    {
+        "id": "fcced07e.fb523",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Ingredients3",
+        "func": "var recipes=global.get('recipes') || {};\n\nif(msg.payload.d === undefined){\n    return null;\n}\n\nvar tmp = {};\ntmp.ingredients = recipes.d[msg.payload.d.select].ingredients;\n\nreturn {payload:JSON.stringify(tmp)};\n\n// var recipes=global.get('recipes') || {};\n// if(msg.payload.test == 3){\n//     msg.payload = recipes.d[3];\n// }else{\n//     msg.payload = \"fail\";\n// }\n// global.set('recipes', recipes);\n// return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 490,
+        "y": 1100,
+        "wires": [
+            [
+                "4c81054a.18ddac",
+                "b4a7c962.f07c78"
+            ]
+        ]
+    },
+    {
+        "id": "21f2e324.58e92c",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "if(!msg.payload.ingredients.length){\n    \n}else{\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 1100,
+        "wires": [
+            [
+                "37d04dd6.a04fe2"
+            ]
+        ]
+    },
+    {
+        "id": "37d04dd6.a04fe2",
+        "type": "ui_text",
+        "z": "e015ab64.a175b8",
+        "group": "dbb5f7c1.9880c8",
+        "order": 4,
+        "width": "6",
+        "height": "5",
+        "name": "",
+        "label": "Ingredients",
+        "format": "{{msg.payload.ingredients}}",
+        "layout": "col-center",
+        "x": 910,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "77f368c4.2ba6e8",
+        "type": "json",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 650,
+        "y": 1160,
+        "wires": [
+            [
+                "c0a54c5a.8e9e4"
+            ]
+        ]
+    },
+    {
+        "id": "9a71f3b5.0b7b6",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Ingredients4",
+        "func": "var recipes=global.get('recipes') || {};\n\nif(msg.payload.d === undefined){\n    return null;\n}\n\nvar tmp = {};\ntmp.ingredients = recipes.d[msg.payload.d.select].ingredients;\n\nreturn {payload:JSON.stringify(tmp)};\n\n// var recipes=global.get('recipes') || {};\n// if(msg.payload.test == 3){\n//     msg.payload = recipes.d[3];\n// }else{\n//     msg.payload = \"fail\";\n// }\n// global.set('recipes', recipes);\n// return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 490,
+        "y": 1160,
+        "wires": [
+            [
+                "77f368c4.2ba6e8",
+                "8bb024be.aad358"
+            ]
+        ]
+    },
+    {
+        "id": "c0a54c5a.8e9e4",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "if(!msg.payload.ingredients.length){\n    \n}else{\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 1160,
+        "wires": [
+            [
+                "e6600179.82c79"
+            ]
+        ]
+    },
+    {
+        "id": "e6600179.82c79",
+        "type": "ui_text",
+        "z": "e015ab64.a175b8",
+        "group": "d1e674ee.c140f8",
+        "order": 4,
+        "width": "6",
+        "height": "5",
+        "name": "",
+        "label": "Ingredients",
+        "format": "{{msg.payload.ingredients}}",
+        "layout": "col-center",
+        "x": 910,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "cd07255.1d87dd8",
+        "type": "debug",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 870,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "caafea40.752878",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Ingredients1",
+        "func": "var recipes=global.get('recipes') || {};\n\nif(msg.payload.d === undefined){\n    return null;\n}\n\nvar tmp = {};\ntmp.ingredients = recipes.d[msg.payload.d.select].ingredients;\n\nreturn {payload:JSON.stringify(tmp)};\n\n// var recipes=global.get('recipes') || {};\n// if(msg.payload.test == 3){\n//     msg.payload = recipes.d[3];\n// }else{\n//     msg.payload = \"fail\";\n// }\n// global.set('recipes', recipes);\n// return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 490,
+        "y": 980,
+        "wires": [
+            [
+                "329d043c.e328ac",
+                "65f99fc8.3e663"
+            ]
+        ]
+    },
+    {
+        "id": "cb9b401b.fddac",
+        "type": "switch",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "property": "payload.d.button",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 270,
+        "y": 860,
+        "wires": [
+            [
+                "8beae916.309cd8"
+            ],
+            [
+                "a04e29c0.def378"
+            ],
+            [
+                "4e43b8cc.809808"
+            ],
+            [
+                "2fb71b84.464414"
+            ]
+        ]
+    },
+    {
+        "id": "8beae916.309cd8",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "SetTimer1",
+        "func": "if(msg.payload.d.timer === undefined){\n    return null;\n}\n\nvar evt1 = {};\nevt1.d = {};\nevt1.d.timer1=msg.payload.d.timer;\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 430,
+        "y": 800,
+        "wires": [
+            [
+                "2b879076.58462"
+            ]
+        ]
+    },
+    {
+        "id": "a04e29c0.def378",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "SetTimer2",
+        "func": "if(msg.payload.d.timer === undefined){\n    return null;\n}\n\nvar evt1 = {};\nevt1.d = {};\nevt1.d.timer2=msg.payload.d.timer;\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 430,
+        "y": 840,
+        "wires": [
+            [
+                "2b879076.58462"
+            ]
+        ]
+    },
+    {
+        "id": "4e43b8cc.809808",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "SetTimer3",
+        "func": "if(msg.payload.d.timer === undefined){\n    return null;\n}\n\nvar evt1 = {};\nevt1.d = {};\nevt1.d.timer3=msg.payload.d.timer;\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 430,
+        "y": 880,
+        "wires": [
+            [
+                "2b879076.58462"
+            ]
+        ]
+    },
+    {
+        "id": "2fb71b84.464414",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "SetTimer4",
+        "func": "if(msg.payload.d.timer === undefined){\n    return null;\n}\n\nvar evt1 = {};\nevt1.d = {};\nevt1.d.timer4=msg.payload.d.timer;\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 430,
+        "y": 920,
+        "wires": [
+            [
+                "2b879076.58462"
+            ]
+        ]
+    },
+    {
+        "id": "a46eef89.efcb6",
+        "type": "mqtt in",
+        "z": "e015ab64.a175b8",
+        "name": "BoardB",
+        "topic": "iot-2/type/EdgeServer/id/BoardB/evt/status/fmt/json",
+        "qos": "0",
+        "datatype": "json",
+        "broker": "2a9ededb.8b11d2",
+        "x": 70,
+        "y": 460,
+        "wires": [
+            [
+                "87b5fb13.d09eb8",
+                "805a1664.156df8",
+                "8fe73c05.4bb92",
+                "593498ad.ba35c8"
+            ]
+        ]
+    },
+    {
+        "id": "217a47f1.85a498",
+        "type": "mqtt in",
+        "z": "e015ab64.a175b8",
+        "name": "BoardA",
+        "topic": "iot-2/type/EdgeServer/id/BoardA/evt/status/fmt/json",
+        "qos": "0",
+        "datatype": "json",
+        "broker": "2a9ededb.8b11d2",
+        "x": 70,
+        "y": 860,
+        "wires": [
+            [
+                "cb9b401b.fddac",
+                "c45e955d.187e78",
+                "e8c965c9.0ee9b8",
+                "3def955c.e9f0fa"
+            ]
+        ]
+    },
+    {
+        "id": "2b879076.58462",
+        "type": "mqtt out",
+        "z": "e015ab64.a175b8",
+        "name": "BoardB",
+        "topic": "iot-2/type/EdgeServer/id/BoardB/cmd/power/fmt/json",
+        "qos": "0",
+        "retain": "false",
+        "broker": "2a9ededb.8b11d2",
+        "x": 1640,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "81769028.e16c8",
+        "type": "mqtt out",
+        "z": "e015ab64.a175b8",
+        "name": "BoardA",
+        "topic": "iot-2/type/EdgeServer/id/BoardA/cmd/power/fmt/json",
+        "qos": "0",
+        "retain": "false",
+        "broker": "2a9ededb.8b11d2",
+        "x": 1720,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "3def955c.e9f0fa",
+        "type": "debug",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 230,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "b46dac70.0db2",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Stringify1",
+        "func": "var evt1 = {};\nevt1.d = {};\nevt1.d.power1=msg.payload;\n\n  return {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1500,
+        "y": 440,
+        "wires": [
+            [
+                "81769028.e16c8",
+                "5d626536.5d3b5c"
+            ]
+        ]
+    },
+    {
+        "id": "1685e381.b2eafc",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Stringify2",
+        "func": "var evt1 = {};\nevt1.d = {};\nevt1.d.power2=msg.payload;\n\n  return {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1520,
+        "y": 480,
+        "wires": [
+            [
+                "81769028.e16c8",
+                "5d626536.5d3b5c"
+            ]
+        ]
+    },
+    {
+        "id": "d65732e9.a801b",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Stringify3",
+        "func": "var evt1 = {};\nevt1.d = {};\nevt1.d.power3=msg.payload;\n\n  return {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1520,
+        "y": 520,
+        "wires": [
+            [
+                "81769028.e16c8"
+            ]
+        ]
+    },
+    {
+        "id": "dab18e34.ebcc7",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "Stringify4",
+        "func": "var evt1 = {};\nevt1.d = {};\nevt1.d.power4=msg.payload;\n\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1520,
+        "y": 560,
+        "wires": [
+            [
+                "81769028.e16c8"
+            ]
+        ]
+    },
+    {
+        "id": "9447e963.8e76f8",
+        "type": "mqtt out",
+        "z": "e015ab64.a175b8",
+        "name": "Food1",
+        "topic": "iot-2/type/EdgeServer/id/Food1/evt/status/fmt/json",
+        "qos": "0",
+        "retain": "false",
+        "broker": "2a9ededb.8b11d2",
+        "x": 1430,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ef982040.f21ad",
+        "type": "mqtt out",
+        "z": "e015ab64.a175b8",
+        "name": "Food2",
+        "topic": "iot-2/type/EdgeServer/id/Food2/evt/status/fmt/json",
+        "qos": "0",
+        "retain": "false",
+        "broker": "2a9ededb.8b11d2",
+        "x": 1430,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "569f5b7c.ab7b94",
+        "type": "mqtt out",
+        "z": "e015ab64.a175b8",
+        "name": "Food3",
+        "topic": "iot-2/type/EdgeServer/id/Food3/evt/status/fmt/json",
+        "qos": "0",
+        "retain": "false",
+        "broker": "2a9ededb.8b11d2",
+        "x": 1430,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "83afb275.cd7c",
+        "type": "mqtt out",
+        "z": "e015ab64.a175b8",
+        "name": "Food4",
+        "topic": "iot-2/type/EdgeServer/id/Food4/evt/status/fmt/json",
+        "qos": "0",
+        "retain": "false",
+        "broker": "2a9ededb.8b11d2",
+        "x": 1430,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "91899047.fad27",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "var evt1 = {};\nevt1.d = {};\nevt1.d.food = msg.payload;\nmsg.payload = evt1;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1030,
+        "y": 100,
+        "wires": [
+            [
+                "9447e963.8e76f8"
+            ]
+        ]
+    },
+    {
+        "id": "805a762f.bd5f88",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "var evt1 = {};\nevt1.d = {};\nevt1.d.food = msg.payload;\nmsg.payload = evt1;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1030,
+        "y": 140,
+        "wires": [
+            [
+                "ef982040.f21ad"
+            ]
+        ]
+    },
+    {
+        "id": "d37ea5a6.9c2cf8",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "var evt1 = {};\nevt1.d = {};\nevt1.d.food = msg.payload;\nmsg.payload = evt1;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1030,
+        "y": 180,
+        "wires": [
+            [
+                "569f5b7c.ab7b94"
+            ]
+        ]
+    },
+    {
+        "id": "8a08edb2.ce264",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "var evt1 = {};\nevt1.d = {};\nevt1.d.food = msg.payload;\nmsg.payload = evt1;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1030,
+        "y": 220,
+        "wires": [
+            [
+                "83afb275.cd7c"
+            ]
+        ]
+    },
+    {
+        "id": "dff357b0.3fcb48",
+        "type": "mqtt out",
+        "z": "e015ab64.a175b8",
+        "name": "Power1",
+        "topic": "iot-2/type/EdgeServer/id/Power1/evt/status/fmt/json",
+        "qos": "0",
+        "retain": "false",
+        "broker": "2a9ededb.8b11d2",
+        "x": 560,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "ea7dd242.19d9f",
+        "type": "mqtt out",
+        "z": "e015ab64.a175b8",
+        "name": "Power2",
+        "topic": "iot-2/type/EdgeServer/id/Power2/evt/status/fmt/json",
+        "qos": "0",
+        "retain": "false",
+        "broker": "2a9ededb.8b11d2",
+        "x": 560,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "34401204.68d9fe",
+        "type": "mqtt out",
+        "z": "e015ab64.a175b8",
+        "name": "Power3",
+        "topic": "iot-2/type/EdgeServer/id/Power3/evt/status/fmt/json",
+        "qos": "0",
+        "retain": "false",
+        "broker": "2a9ededb.8b11d2",
+        "x": 560,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "6a2f9f68.ba30d",
+        "type": "mqtt out",
+        "z": "e015ab64.a175b8",
+        "name": "Power4",
+        "topic": "iot-2/type/EdgeServer/id/Power4/evt/status/fmt/json",
+        "qos": "0",
+        "retain": "false",
+        "broker": "2a9ededb.8b11d2",
+        "x": 560,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "1dae1085.bf574f",
+        "type": "mqtt out",
+        "z": "e015ab64.a175b8",
+        "name": "Ing1",
+        "topic": "iot-2/type/EdgeServer/id/Ing1/evt/status/fmt/json",
+        "qos": "0",
+        "retain": "false",
+        "broker": "2a9ededb.8b11d2",
+        "x": 1050,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "57a6e492.21718c",
+        "type": "mqtt out",
+        "z": "e015ab64.a175b8",
+        "name": "ing2",
+        "topic": "iot-2/type/EdgeServer/id/Ing2/evt/status/fmt/json",
+        "qos": "0",
+        "retain": "false",
+        "broker": "2a9ededb.8b11d2",
+        "x": 1050,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "2bbf96d9.47c07a",
+        "type": "mqtt out",
+        "z": "e015ab64.a175b8",
+        "name": "Ing3",
+        "topic": "iot-2/type/EdgeServer/id/Ing3/evt/status/fmt/json",
+        "qos": "0",
+        "retain": "false",
+        "broker": "2a9ededb.8b11d2",
+        "x": 1050,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "57c7ef77.33956",
+        "type": "mqtt out",
+        "z": "e015ab64.a175b8",
+        "name": "Ing4",
+        "topic": "iot-2/type/EdgeServer/id/Ing4/evt/status/fmt/json",
+        "qos": "0",
+        "retain": "false",
+        "broker": "2a9ededb.8b11d2",
+        "x": 1050,
+        "y": 1480,
+        "wires": []
+    },
+    {
+        "id": "80611a70.2c53b8",
+        "type": "debug",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1130,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "d251e71a.1f0e78",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "var evt1 = {};\nevt1.d = {};\nevt1.d.power = msg.payload;\nmsg.payload = evt1;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 80,
+        "wires": [
+            [
+                "dff357b0.3fcb48"
+            ]
+        ]
+    },
+    {
+        "id": "c8152c29.4150c",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "var evt1 = {};\nevt1.d = {};\nevt1.d.power = msg.payload;\nmsg.payload = evt1;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 120,
+        "wires": [
+            [
+                "ea7dd242.19d9f"
+            ]
+        ]
+    },
+    {
+        "id": "98af3d5f.cc0b2",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "var evt1 = {};\nevt1.d = {};\nevt1.d.power = msg.payload;\nmsg.payload = evt1;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "34401204.68d9fe"
+            ]
+        ]
+    },
+    {
+        "id": "4c78b23a.389dac",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "var evt1 = {};\nevt1.d = {};\nevt1.d.power = msg.payload;\nmsg.payload = evt1;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 200,
+        "wires": [
+            [
+                "6a2f9f68.ba30d"
+            ]
+        ]
+    },
+    {
+        "id": "8d175c08.de222",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "var evt1 = {};\nevt1.ingredients = msg.payload;\nmsg.payload = evt1;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 870,
+        "y": 1360,
+        "wires": [
+            [
+                "1dae1085.bf574f",
+                "80611a70.2c53b8"
+            ]
+        ]
+    },
+    {
+        "id": "c2391d1e.afafc",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "var evt1 = {};\nevt1.ingredients = msg.payload;\nmsg.payload = evt1;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 870,
+        "y": 1400,
+        "wires": [
+            [
+                "57a6e492.21718c"
+            ]
+        ]
+    },
+    {
+        "id": "aaf881cc.02d67",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "var evt1 = {};\nevt1.ingredients = msg.payload;\nmsg.payload = evt1;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 870,
+        "y": 1440,
+        "wires": [
+            [
+                "2bbf96d9.47c07a"
+            ]
+        ]
+    },
+    {
+        "id": "4b49cc47.c57fe4",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "func": "var evt1 = {};\nevt1.ingredients = msg.payload;\nmsg.payload = evt1;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 870,
+        "y": 1480,
+        "wires": [
+            [
+                "57c7ef77.33956"
+            ]
+        ]
+    },
+    {
+        "id": "e8ede88e.70b258",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "SetTimer3",
+        "func": "var evt1 = {};\nevt1.d = {};\nevt1.d.timer3=msg.payload;\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 930,
+        "y": 540,
+        "wires": [
+            [
+                "2b879076.58462"
+            ]
+        ]
+    },
+    {
+        "id": "fde5aa0b.d166b8",
+        "type": "function",
+        "z": "e015ab64.a175b8",
+        "name": "SetTimer4",
+        "func": "var evt1 = {};\nevt1.d = {};\nevt1.d.timer4=msg.payload;\nreturn {payload:JSON.stringify(evt1)};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 930,
+        "y": 660,
+        "wires": [
+            [
+                "2b879076.58462"
+            ]
+        ]
+    },
+    {
+        "id": "e0a52d4.f7aa3d",
+        "type": "comment",
+        "z": "e015ab64.a175b8",
+        "name": "Read ME",
+        "info": "1. Change Edge Server to your raspberry pi's local ip address:1883\n2. Power1~4 nodes : Read data of Indcution1~4 and sync with ui power switch.\n3. reset1~4 : If Power1~4 turn off, then reset the ui text.\n4. Timer, Type, Food : Read which recipes id was selected and set the ui text and power/timer of Board B. (If type of recipe is \"yes\" then it turns induction on. Else if type of ricpe is \"off\" then it turns induction off.)\n6. Cancel1~4 : If user select Cancle Cooking on Board A, then check the induction number and turn that induction off.\n7. switch node : Check which induction did user select and only send data to that specific induction.\n8. SetTimer1~4 : If user select Change Timer on Board A, then check the inductuon number and change cooking timer to what user selected.\n9. ingredients1~4 : Check selected recipe id and send the ingredients data which included in that recipe id's information.",
+        "x": 80,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "65f99fc8.3e663",
+        "type": "json",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 870,
+        "y": 1200,
+        "wires": [
+            [
+                "1dae1085.bf574f"
+            ]
+        ]
+    },
+    {
+        "id": "600cc666.bf5eb8",
+        "type": "json",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 870,
+        "y": 1240,
+        "wires": [
+            [
+                "57a6e492.21718c"
+            ]
+        ]
+    },
+    {
+        "id": "b4a7c962.f07c78",
+        "type": "json",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 870,
+        "y": 1280,
+        "wires": [
+            [
+                "2bbf96d9.47c07a"
+            ]
+        ]
+    },
+    {
+        "id": "8bb024be.aad358",
+        "type": "json",
+        "z": "e015ab64.a175b8",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 870,
+        "y": 1320,
+        "wires": [
+            [
+                "57c7ef77.33956"
+            ]
+        ]
+    },
+    {
+        "id": "4615b2ca.851d3c",
+        "type": "ui_group",
+        "z": "",
+        "name": "Yo Al girl1",
+        "tab": "795dcce6.a337d4",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "7d1a43f4.572b4c",
+        "type": "ui_group",
+        "z": "",
+        "name": "Yo Al Girl2",
+        "tab": "92279e75.a6bcd",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "dbb5f7c1.9880c8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Yo Al girl3",
+        "tab": "ab9f6e82.1ef3a",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "d1e674ee.c140f8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Yo Al girl4",
+        "tab": "46517b00.8cdc74",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "2a9ededb.8b11d2",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "172.30.1.30",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "795dcce6.a337d4",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Yo Al Girl",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "92279e75.a6bcd",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Yo Al girl2",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ab9f6e82.1ef3a",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Yo Al girl3",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "46517b00.8cdc74",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Yo Al girl4",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

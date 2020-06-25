@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "*.ino": "cpp",
+        "system_error": "cpp",
+        "*.tcc": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "array": "cpp",
+        "string_view": "cpp"
+    }
+}

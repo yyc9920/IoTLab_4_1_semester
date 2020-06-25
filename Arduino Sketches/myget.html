@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>커스텀 레시피 추가</title>
+	</head>
+
+	<style>
+input {
+	width: 10em;
+	height: 3em;
+	font-size: 10px;
+}
+body {
+  background-image: url('https://images.unsplash.com/photo-1479150928156-423a69d91fe0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+	form  { display: table;      }
+	label { display: table-cell; }
+	input { display: table-cell; }
+	p     { display: table-row;  }
+	</style>
+
+	<body>
+		<center>
+
+			<h1>커스텀 레시피를 추가하세요!</h1>
+			<form action="/gojson" method="POST" id="myform">
+				<p>
+					<label for="a" style="font-size:15pt;"><b>Food Name : </b></label><input type="text" name="food">
+				</p>
+				<br>
+				<p>
+					<label for="a" style="font-size:15pt;"><b>Need Fire? : </b></label>
+					Yes<input type="radio" name="type" value="yes" checked>
+					No<input type="radio" name="type" value="no">
+				</p>
+				<br>
+				<p>
+					<label for="a" style="font-size:15pt;"><b>Time Needed(sec) : </b></label><input type="text" name="timer">
+				</p>
+				<br>
+				<p>
+					<label for="a" style="font-size:15pt;"><b>Ingredients 1 : </b></label><input type="text" name="ing">
+					<label for="a" style="font-size:15pt;">&nbsp;&nbsp;<b>Ingredients 2 : </b></label><input type="text" name="ing">
+				</p>
+				<br>
+				<p>
+					<label for="a" style="font-size:15pt;"><b>Ingredients 3 : </b></label><input type="text" name="ing">
+
+
+					<label for="a" style="font-size:15pt;">&nbsp;&nbsp;<b>Ingredients 4 : </b></label><input type="text" name="ing">
+				</p>
+				<br>
+				<p>
+					<label for="a" style="font-size:15pt;"><b>Ingredients 5 : </b></label><input type="text" name="ing">
+
+
+					<label for="a" style="font-size:15pt;">&nbsp;&nbsp;<b>Ingredients 6 : </b></label><input type="text" name="ing">
+				</p>
+				<br>
+				<p>
+					<label for="a" style="font-size:15pt;"><b>Ingredients 7 : </b></label><input type="text" name="ing">
+
+
+					<label for="a" style="font-size:15pt;">&nbsp;&nbsp;<b>Ingredients 8 : </b></label><input type="text" name="ing">
+				</p>
+				<br>
+				<p>
+					<label for="a" style="font-size:15pt;"><b>Ingredients 9 : </b></label><input type="text" name="ing">
+
+
+					<label for="a" style="font-size:15pt;">&nbsp;&nbsp;<b>Ingredients 10 : </b></label><input type="text" name="ing">
+				</p>
+				<br>
+				<p>
+					<label for="a" style="font-size:15pt;"><b>Ingredients 11 : </b></label><input type="text" name="ing">
+
+
+					<label for="a" style="font-size:15pt;">&nbsp;&nbsp;<b>Ingredients 12 : </b></label><input type="text" name="ing">
+				</p>
+				<br>
+				<p>
+					<label for="a" style="font-size:15pt;"><b>Ingredients 13 : </b></label><input type="text" name="ing">
+
+
+					<label for="a" style="font-size:15pt;">&nbsp;&nbsp;<b>Ingredients 14 : </b></label><input type="text" name="ing">
+				</p>
+				<br>
+				<p>
+					<label for="a" style="font-size:15pt;"><b>Ingredients 15 : </b></label><input type="text" name="ing">
+
+
+					<label for="a" style="font-size:15pt;">&nbsp;&nbsp;<b>Ingredients 16 : </b></label><input type="text" name="ing">
+				</p>
+				<br>
+				<input type="submit" value="레시피 추가" style="font-size:15pt;">
+			</form>
+		</center>
+	</body>
+</html>

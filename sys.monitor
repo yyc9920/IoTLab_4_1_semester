@@ -1,0 +1,15 @@
+#!/bin/bash
+export PATH=/home/ubuntu/bin:/home/ubuntu/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+function monitor() {
+    read f1 f2 used avail f5 f6 all <<< $(free -m | grep 'Mem')
+    read f1 user f2 sys f3 f4 f5 idle all <<< $(top -b -n 1 | grep -E "%Cpu")
+
+    curl -i -XPOST 'http://127.0.0.1:8086/write?db=sensorDB' -u iot:iot2018 --data-binary "cpu,host=influx user=$user,sys=$sys,idle=$idle,mem=$used"
+}
+
+while [ true ]
+do
+    monitor
+    sleep 5
+done

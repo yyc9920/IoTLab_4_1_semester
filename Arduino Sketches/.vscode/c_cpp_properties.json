@@ -1,0 +1,22 @@
+{
+    "configurations": [
+      {
+        "name": "Arduino",
+        "includePath": ["${workspaceRoot}"],
+        "browse": {
+          "path": [
+            "D:/Program Files (x86)/Arduino/hardware",
+            "D:/Program Files (x86)/Arduino/libraries",
+            "C:/Users/yyc99/Documents/Arduino/libraries/",
+            "C:/Users/yyc99/AppData/Local/Arduino15/packages",
+            "${workspaceRoot}"
+          ],
+          "limitSymbolsToIncludedHeaders": true,
+          "databaseFilename": ""
+        },
+        "intelliSenseMode": "msvc-x64"
+      }
+    ],
+    "version": 4
+  }
+  
