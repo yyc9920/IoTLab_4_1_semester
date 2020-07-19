@@ -1,4 +1,4 @@
-# IoTLab 4-1 semester
+# Yo-Al-Girl
 Final Project Directory :
 
 ./Arduino Sketches/Final Project
